@@ -48,8 +48,6 @@ export async function getStaticProps() {
   return {
     props: {
       latestNews: serializedNews,
-    },
-    // Revalidate setiap 1 jam
-    revalidate: 3600,
+    }
   };
 }

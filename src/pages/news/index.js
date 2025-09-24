@@ -276,8 +276,7 @@ export async function getStaticProps() {
       props: { 
         allPosts: serializedPosts,
         allTags
-      },
-      revalidate: 3600, // Revalidate setiap 1 jam
+      }
     };
   } catch (error) {
     console.error('Error in getStaticProps for news index:', error);
@@ -285,8 +284,7 @@ export async function getStaticProps() {
       props: {
         allPosts: [],
         allTags: []
-      },
-      revalidate: 3600,
+      }
     };
   }
 }
