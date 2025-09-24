@@ -3,10 +3,10 @@ export const SITE_URL = 'https://iibsimambalqi.com';
 export const SITE_DESCRIPTION = 'Pendidikan Islam berkualitas dengan program tahfidz Quran dan pendidikan formal terintegrasi';
 
 export const SOCIAL_MEDIA = {
-  facebook: 'https://facebook.com/iibsimambalqi',
-  instagram: 'https://instagram.com/iibsimambalqi',
+  facebook: 'https://www.facebook.com/profile.php?id=61571778666692',
+  instagram: 'https://www.instagram.com/iibsimambalqipare/',
   twitter: 'https://twitter.com/iibsimambalqi',
-  youtube: 'https://youtube.com/c/iibsimambalqi',
+  youtube: 'https://www.youtube.com/@IIBSAImamBalqiPare',
 };
 
 export const CONTACT_INFO = {
