@@ -1,5 +1,5 @@
 export const SITE_NAME = 'IIBS IMAM BALQI PARE';
-export const SITE_URL = 'https://iibsimambalqi.netlify.app';
+export const SITE_URL = 'https://iibsimambalqi.com';
 export const SITE_DESCRIPTION = 'Pendidikan Islam berkualitas dengan program tahfidz Quran dan pendidikan formal terintegrasi';
 
 export const SOCIAL_MEDIA = {
