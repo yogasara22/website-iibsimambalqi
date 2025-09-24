@@ -336,63 +336,86 @@ export default function NewsDetail({ post, morePosts }) {
   );
 }
 
-export async function getStaticProps({ params }) {
-  const post = getContentBySlug('news', params.slug, [
-    'title',
-    'date',
-    'slug',
-    'author',
-    'content',
-    'featured_image',
-    'excerpt',
-    'tags',
-  ]);
-  
-  const content = await markdownToHtml(post.content || '');
+export async function getStaticPaths() {
+  try {
+    const posts = getAllContent('news', ['slug']);
+    const paths = posts.map((post) => ({
+      params: {
+        slug: post.slug,
+      },
+    }));
 
-  // Get more posts, excluding the current one
-  const morePosts = getAllContent('news', [
-    'title',
-    'date',
-    'slug',
-    'author',
-    'featured_image',
-    'excerpt',
-  ])
-    .filter((p) => p.slug !== params.slug)
-    .slice(0, 3);
-
-  // Konversi tanggal ke string untuk menghindari error serialisasi
-  const serializedPost = {
-    ...post,
-    date: post.date instanceof Date ? post.date.toISOString() : post.date,
-    content
-  };
-
-  const serializedMorePosts = morePosts.map(post => ({
-    ...post,
-    date: post.date instanceof Date ? post.date.toISOString() : post.date
-  }));
-
-  return {
-    props: {
-      post: serializedPost,
-      morePosts: serializedMorePosts,
-    },
-  };
+    return {
+      paths,
+      fallback: false, // Penting: false untuk static export
+    };
+  } catch (error) {
+    console.error('Error in getStaticPaths:', error);
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
 }
 
-export async function getStaticPaths() {
-  const posts = getAllContent('news', ['slug']);
-
-  return {
-    paths: posts.map((post) => {
+export async function getStaticProps({ params }) {
+  try {
+    const post = getContentBySlug('news', params.slug, [
+      'title',
+      'date',
+      'slug',
+      'author',
+      'content',
+      'featured_image',
+      'excerpt',
+      'tags',
+    ]);
+    
+    if (!post) {
       return {
-        params: {
-          slug: post.slug,
-        },
+        notFound: true,
       };
-    }),
-    fallback: 'blocking',
-  };
+    }
+    
+    const content = await markdownToHtml(post.content || '');
+
+    // Get more posts, excluding the current one
+    const morePosts = getAllContent('news', [
+      'title',
+      'date',
+      'slug',
+      'author',
+      'featured_image',
+      'excerpt',
+    ])
+      .filter((p) => p.slug !== params.slug)
+      .slice(0, 3);
+
+    // Konversi tanggal ke string untuk menghindari error serialisasi
+    const serializedPost = {
+      ...post,
+      date: post.date instanceof Date ? post.date.toISOString() : post.date,
+      content
+    };
+    
+    const serializedMorePosts = morePosts.map(post => ({
+      ...post,
+      date: post.date instanceof Date ? post.date.toISOString() : post.date
+    }));
+
+    return {
+      props: {
+        post: serializedPost,
+        morePosts: serializedMorePosts,
+      },
+      // Revalidate setiap 1 jam (3600 detik)
+      // Untuk static export, ini akan diabaikan
+      revalidate: 3600,
+    };
+  } catch (error) {
+    console.error('Error in getStaticProps:', error);
+    return {
+      notFound: true,
+    };
+  }
 }

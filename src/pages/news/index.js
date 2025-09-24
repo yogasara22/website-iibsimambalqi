@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import Layout from '../../components/common/Layout';
-import { getAllContent } from '../../lib/api';
+import { getAllPosts } from '../../lib/posts';
 import { formatDate } from '../../lib/utils';
 
 export default function NewsIndex({ allPosts, allTags }) {
@@ -254,36 +254,39 @@ export default function NewsIndex({ allPosts, allTags }) {
 }
 
 export async function getStaticProps() {
-  const allPosts = getAllContent('news', [
-    'title',
-    'date',
-    'slug',
-    'author',
-    'featured_image',
-    'excerpt',
-    'tags',
-  ]);
-  
-  // Konversi tanggal ke string untuk menghindari error serialisasi
-  const serializedPosts = allPosts.map(post => ({
-    ...post,
-    date: post.date instanceof Date ? post.date.toISOString() : post.date
-  }));
-  
-  // Ekstrak hanya tag pertama (yang muncul di badge) dari setiap post
-  const allTags = Array.from(
-    new Set(
-      serializedPosts
-        .map(post => post.tags && post.tags.length > 0 ? post.tags[0] : null)
-        .filter(Boolean)
-    )
-  );
+  try {
+    const posts = getAllPosts();
+    
+    // Konversi tanggal ke string untuk menghindari error serialisasi
+    const serializedPosts = posts.map(post => ({
+      ...post,
+      date: post.date instanceof Date ? post.date.toISOString() : post.date
+    }));
+    
+    // Ekstrak hanya tag pertama (yang muncul di badge) dari setiap post
+    const allTags = Array.from(
+      new Set(
+        serializedPosts
+          .map(post => post.tags && post.tags.length > 0 ? post.tags[0] : null)
+          .filter(Boolean)
+      )
+    );
 
-  return {
-    props: { 
-      allPosts: serializedPosts,
-      allTags
-    },
-    revalidate: 3600, // Revalidate setiap 1 jam
-  };
+    return {
+      props: { 
+        allPosts: serializedPosts,
+        allTags
+      },
+      revalidate: 3600, // Revalidate setiap 1 jam
+    };
+  } catch (error) {
+    console.error('Error in getStaticProps for news index:', error);
+    return {
+      props: {
+        allPosts: [],
+        allTags: []
+      },
+      revalidate: 3600,
+    };
+  }
 }
