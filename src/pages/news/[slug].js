@@ -389,10 +389,8 @@ export async function getStaticProps({ params }) {
         post: serializedPost,
         morePosts: serializedMorePosts,
       },
-      // Revalidate setiap 1 jam (3600 detik)
-      // Untuk static export, ini akan diabaikan
-      revalidate: 3600,
     };
+
   } catch (error) {
     console.error('Error in getStaticProps:', error);
     return {
