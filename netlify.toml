@@ -6,16 +6,24 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
 
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    enable = false
+
+# Redirects untuk static export
 [[redirects]]
   from = "/admin/*"
   to = "/admin/index.html"
   status = 200
 
-[[redirects]]
-  from = "/news/*"
-  to = "/news/index.html"
-  status = 200
+# Jangan redirect dynamic routes ke index
+# [[redirects]]
+#   from = "/news/*"
+#   to = "/news/index.html"
+#   status = 200
 
+# Fallback untuk SPA
 [[redirects]]
   from = "/*"
   to = "/index.html"

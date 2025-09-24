@@ -4,8 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import Layout from '../../components/common/Layout';
-import { getContentBySlug, getAllContent } from '../../lib/api';
-import markdownToHtml from '../../lib/markdownToHtml';
+import { getAllPosts, getPostBySlug } from '../../lib/posts';
 import { formatDate } from '../../lib/utils';
 
 export default function NewsDetail({ post, morePosts }) {
@@ -338,7 +337,7 @@ export default function NewsDetail({ post, morePosts }) {
 
 export async function getStaticPaths() {
   try {
-    const posts = getAllContent('news', ['slug']);
+    const posts = getAllPosts();
     const paths = posts.map((post) => ({
       params: {
         slug: post.slug,
@@ -360,16 +359,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   try {
-    const post = getContentBySlug('news', params.slug, [
-      'title',
-      'date',
-      'slug',
-      'author',
-      'content',
-      'featured_image',
-      'excerpt',
-      'tags',
-    ]);
+    const post = await getPostBySlug(params.slug);
     
     if (!post) {
       return {
@@ -377,25 +367,16 @@ export async function getStaticProps({ params }) {
       };
     }
     
-    const content = await markdownToHtml(post.content || '');
-
     // Get more posts, excluding the current one
-    const morePosts = getAllContent('news', [
-      'title',
-      'date',
-      'slug',
-      'author',
-      'featured_image',
-      'excerpt',
-    ])
+    const allPosts = getAllPosts();
+    const morePosts = allPosts
       .filter((p) => p.slug !== params.slug)
       .slice(0, 3);
 
     // Konversi tanggal ke string untuk menghindari error serialisasi
     const serializedPost = {
       ...post,
-      date: post.date instanceof Date ? post.date.toISOString() : post.date,
-      content
+      date: post.date instanceof Date ? post.date.toISOString() : post.date
     };
     
     const serializedMorePosts = morePosts.map(post => ({
