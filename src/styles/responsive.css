@@ -1,0 +1,1616 @@
+/* Responsive Styles */
+/* Mobile: improved hero UI with better contrast and readability */
+@media (max-width: 640px) {
+  /* hide original full-screen BG image area and right-side santri frame */
+  #home .absolute.inset-0.z-0 {
+    display: none !important;
+  }
+  #home .md\:w-2\/5 {
+    display: none !important;
+  }
+
+  /*
+    Beautiful Islamic-inspired mobile background:
+    - elegant gradient with Islamic colors
+    - geometric patterns inspired by Islamic art
+    - maintains excellent readability
+  */
+  #home {
+    background: linear-gradient(
+      135deg,
+      #f0fdfa 0%,
+      #ffffff 25%,
+      #f0f9ff 50%,
+      #ffffff 75%,
+      #ecfef1 100%
+    ) !important;
+    
+    /* Islamic geometric patterns and illustrations */
+    background-image: 
+      /* Main Islamic star patterns */
+      radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 25%),
+      radial-gradient(circle at 80% 30%, rgba(34, 197, 94, 0.06) 0%, transparent 30%),
+      radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 35%),
+      radial-gradient(circle at 70% 80%, rgba(16, 185, 129, 0.07) 0%, transparent 40%),
+      
+      /* Islamic geometric overlay patterns */
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 40px,
+        rgba(16, 185, 129, 0.015) 40px,
+        rgba(16, 185, 129, 0.015) 42px
+      ),
+      repeating-linear-gradient(
+        60deg,
+        transparent,
+        transparent 35px,
+        rgba(34, 197, 94, 0.012) 35px,
+        rgba(34, 197, 94, 0.012) 37px
+      ),
+      repeating-linear-gradient(
+        120deg,
+        transparent,
+        transparent 35px,
+        rgba(59, 130, 246, 0.01) 35px,
+        rgba(59, 130, 246, 0.01) 37px
+      ),
+      
+      /* Subtle Islamic arabesque pattern */
+      repeating-conic-gradient(
+        from 0deg at 50% 50%,
+        transparent 0deg,
+        rgba(16, 185, 129, 0.008) 45deg,
+        transparent 90deg,
+        rgba(34, 197, 94, 0.006) 135deg,
+        transparent 180deg
+      ) !important;
+    
+    min-height: calc(100vh - 60px);
+    padding: 1rem 1rem 2rem 1rem !important; /* Drastically reduced top padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Islamic decorative elements */
+  #home::before {
+    content: '';
+    position: absolute;
+    top: 12%;
+    left: 8%;
+    width: 50px;
+    height: 50px;
+    border: 2px solid rgba(16, 185, 129, 0.15);
+    border-radius: 50%;
+    transform: rotate(15deg);
+    z-index: 1;
+  }
+
+  #home::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(45deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.08));
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    transform: rotate(-12deg);
+    z-index: 1;
+  }
+
+  /* Add more Islamic geometric decorations */
+  #home .hero-content::before {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -5%;
+    width: 40px;
+    height: 40px;
+    background: rgba(16, 185, 129, 0.08);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    transform: rotate(25deg);
+    z-index: 0;
+  }
+
+  #home .hero-content::after {
+    content: '';
+    position: absolute;
+    bottom: -15%;
+    right: -8%;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(34, 197, 94, 0.12);
+    transform: rotate(45deg);
+    z-index: 0;
+  }
+
+  /* Make the main text column with better spacing */
+  #home .md\:w-3\/5,
+  #home .hero-content {
+    width: 100% !important;
+    max-width: 480px !important;
+    padding-right: 0 !important;
+    margin: 0 auto !important;
+    color: #1f2937 !important;
+    position: relative;
+    z-index: 10;
+    padding-top: 0.5rem !important; /* Minimal top padding */
+  }
+
+  /* Badge / inline label styling - enhanced with soft glow */
+  #home .hero-content .inline-flex,
+  #home .hero-content .inline-block {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 253, 250, 0.95) 100%) !important;
+    color: #065f46 !important;
+    border: 1px solid rgba(16, 185, 129, 0.15) !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 1rem !important;
+    box-shadow: 
+      0 4px 12px rgba(16, 185, 129, 0.08),
+      0 2px 4px rgba(0, 0, 0, 0.02) !important;
+    backdrop-filter: blur(10px) !important;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Add subtle glow effect to badge */
+  #home .hero-content .inline-flex::before,
+  #home .hero-content .inline-block::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(34, 197, 94, 0.08));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  #home .hero-content .inline-flex:hover::before,
+  #home .hero-content .inline-block:hover::before {
+    opacity: 1;
+  }
+
+  /* Headline styling - strong hierarchy and readability */
+  #home .hero-content h1 {
+    color: #064e3b !important; /* deep green for Islamic feel */
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 1rem !important;
+    text-shadow: 0 1px 2px rgba(6, 78, 59, 0.1) !important;
+  }
+
+  /* Paragraph text - excellent readability */
+  #home .hero-content p {
+    color: #4b5563 !important; /* medium gray for body text */
+    line-height: 1.6 !important;
+    font-size: 1rem !important;
+    margin-bottom: 1.5rem !important;
+    font-weight: 400 !important;
+  }
+
+  /* Button improvements - clear hierarchy and contrast */
+  #home .hero-content .hero-buttons {
+    gap: 0.75rem !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    margin-top: 1.5rem !important;
+  }
+
+  /* Primary button - Enhanced with gradient and glow */
+  #home .hero-content .hero-buttons a:first-child {
+    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    padding: 1rem 2rem !important;
+    border-radius: 1rem !important;
+    box-shadow: 
+      0 8px 24px rgba(16, 185, 129, 0.25),
+      0 4px 8px rgba(5, 150, 105, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    border: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    width: 100% !important;
+    text-align: center !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Add shine effect to primary button */
+  #home .hero-content .hero-buttons a:first-child::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+  }
+
+  #home .hero-content .hero-buttons a:first-child:hover::before {
+    animation: shine 0.6s ease-in-out;
+  }
+
+  @keyframes shine {
+    0% { transform: translateX(-100%) rotate(45deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(100%) rotate(45deg); opacity: 0; }
+  }
+
+  #home .hero-content .hero-buttons a:first-child:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 
+      0 12px 32px rgba(16, 185, 129, 0.35),
+      0 6px 12px rgba(5, 150, 105, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  }
+
+  /* Secondary button - Glass morphism style */
+  #home .hero-content .hero-buttons a:last-child {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px) !important;
+    color: #047857 !important;
+    font-weight: 600 !important;
+    padding: 1rem 2rem !important;
+    border: 1.5px solid rgba(16, 185, 129, 0.2) !important;
+    border-radius: 1rem !important;
+    box-shadow: 
+      0 6px 16px rgba(0, 0, 0, 0.04),
+      0 2px 6px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  #home .hero-content .hero-buttons a:last-child:hover {
+    background: rgba(240, 253, 250, 0.95) !important;
+    border-color: rgba(16, 185, 129, 0.35) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 
+      0 8px 20px rgba(0, 0, 0, 0.06),
+      0 4px 8px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  }
+
+  /* Ensure any remaining images are properly sized */
+  #home img {
+    max-width: 90% !important;
+    height: auto !important;
+    display: block;
+    margin: 1rem auto !important;
+    border-radius: 0.5rem !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Completely hide scroll indicator on mobile */
+  #home .scroll-indicator,
+  #home .animate-bounce {
+    display: none !important;
+  }
+
+  /* Hide any scroll-related elements */
+  #home a[href="#about"] {
+    display: none !important;
+  }
+
+  /* Also hide any elements with scroll text */
+  #home *:contains("Scroll"),
+  #home *:contains("scroll"),
+  #home *:contains("Jelajahi") {
+    display: none !important;
+  }
+
+  /* Enhanced spacing for better visual hierarchy */
+  #home .hero-content > * + * {
+    margin-top: 1.25rem !important;
+  }
+
+  /* Additional mobile-specific improvements */
+  #home .hero-content h1 {
+    font-size: 2rem !important; /* 32px - slightly larger */
+    margin-bottom: 1.25rem !important;
+  }
+
+  #home .hero-content h2 {
+    font-size: 1.5rem !important; /* 24px */
+    color: #374151 !important;
+  }
+
+  /* Improve touch targets for mobile */
+  #home .hero-content .hero-buttons a {
+    min-height: 56px !important; /* Increased from 48px */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Add floating animation to decorative elements */
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(15deg); }
+    50% { transform: translateY(-10px) rotate(15deg); }
+  }
+
+  @keyframes floatReverse {
+    0%, 100% { transform: translateY(0) rotate(-12deg); }
+    50% { transform: translateY(-8px) rotate(-12deg); }
+  }
+
+  #home::before {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  #home::after {
+    animation: floatReverse 3s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  /* Enhanced mobile image styling with proper spacing */
+  #home .w-full.max-w-sm {
+    max-width: 18rem !important;
+    margin-top: 2rem !important; /* Reduced from 3rem */
+  }
+
+  /* Mobile card enhancements with Islamic touches */
+  #home .relative.bg-white\/80 {
+    backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 
+      0 16px 32px rgba(0, 0, 0, 0.06),
+      0 6px 12px rgba(16, 185, 129, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+    position: relative;
+    overflow: visible;
+  }
+
+  /* Add Islamic geometric border decoration to mobile card */
+  #home .relative.bg-white\/80::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(45deg, 
+      rgba(16, 185, 129, 0.1) 0%,
+      rgba(34, 197, 94, 0.08) 25%,
+      rgba(59, 130, 246, 0.06) 50%,
+      rgba(16, 185, 129, 0.1) 75%,
+      rgba(34, 197, 94, 0.08) 100%
+    );
+    border-radius: 2rem;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  #home .relative.bg-white\/80:hover::before {
+    opacity: 1;
+  }
+
+  /* Add subtle parallax effect to background patterns on scroll */
+  @supports (background-attachment: fixed) {
+    #home {
+      background-attachment: local !important;
+    }
+  }
+}
+
+/* Enhanced Tablet Responsive Styles (641px - 1023px) */
+@media (min-width: 641px) and (max-width: 1023px) {
+  /* Container adjustments for tablet */
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 100%;
+  }
+  
+  /* Header enhancements for tablet */
+  header {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+  
+  header .container {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  /* Logo and branding adjustments for tablet */
+  header .flex.items-center img {
+    height: 2.75rem !important; /* 44px - slightly larger than mobile */
+  }
+  
+  header .ml-2 span {
+    font-size: 1.25rem !important; /* 20px */
+    line-height: 1.2;
+  }
+  
+  header .ml-2 p {
+    font-size: 0.75rem !important; /* 12px */
+    margin-top: 0.125rem !important;
+  }
+  
+  /* Mobile menu button styling for tablet */
+  .lg\:hidden button {
+    padding: 0.75rem !important;
+    border-radius: 0.75rem !important;
+  }
+  
+  .lg\:hidden button svg {
+    height: 1.75rem !important; /* 28px */
+    width: 1.75rem !important;
+    stroke-width: 2.5 !important;
+  }
+  
+  /* Enhanced mobile menu for tablet */
+  .lg\:hidden .relative.z-50 {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    border-top: 2px solid rgba(16, 185, 129, 0.1) !important;
+    box-shadow: 
+      0 10px 25px rgba(0, 0, 0, 0.08),
+      0 6px 12px rgba(16, 185, 129, 0.12) !important;
+  }
+  
+  .lg\:hidden .relative.z-50 .px-4 {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* Navigation enhancements for tablet mobile menu */
+  .lg\:hidden nav {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  
+  .lg\:hidden nav a {
+    display: flex !important;
+    align-items: center !important;
+    padding: 1rem 1.5rem !important;
+    font-size: 1.125rem !important; /* 18px */
+    font-weight: 600 !important;
+    color: #374151 !important;
+    text-decoration: none !important;
+    border-radius: 0.75rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .lg\:hidden nav a:hover {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%) !important;
+    color: #065f46 !important;
+    transform: translateX(4px) !important;
+    box-shadow: 
+      0 4px 12px rgba(16, 185, 129, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  }
+  
+  /* Navigation icons already handled by Navigation.js component */
+  /* Remove duplicate icon styling to prevent double icons */
+  
+  /* Add subtle animation for menu items */
+  .lg\:hidden nav a {
+    animation: slideInLeft 0.4s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  
+  .lg\:hidden nav a:nth-child(1) { animation-delay: 0.1s; }
+  .lg\:hidden nav a:nth-child(2) { animation-delay: 0.15s; }
+  .lg\:hidden nav a:nth-child(3) { animation-delay: 0.2s; }
+  .lg\:hidden nav a:nth-child(4) { animation-delay: 0.25s; }
+  .lg\:hidden nav a:nth-child(5) { animation-delay: 0.3s; }
+  .lg\:hidden nav a:nth-child(6) { animation-delay: 0.35s; }
+  
+  /* Add divider between menu items */
+  .lg\:hidden nav a:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+  }
+  
+  /* Spacing adjustments for tablet */
+  section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  /* Typography adjustments for tablet */
+  h1 {
+    font-size: 2.5rem !important; /* 40px */
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 2rem !important; /* 32px */
+    line-height: 1.3;
+  }
+  
+  h3 {
+    font-size: 1.5rem !important; /* 24px */
+  }
+  
+  /* Adjust grid layouts for tablet */
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .grid-cols-4 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  /* Hero section adjustments for tablet - Mobile-like Islamic design */
+  #home {
+    /* Beautiful Islamic-inspired tablet background - same as mobile */
+    background: linear-gradient(
+      135deg,
+      #f0fdfa 0%,
+      #ffffff 25%,
+      #f0f9ff 50%,
+      #ffffff 75%,
+      #ecfef1 100%
+    ) !important;
+    
+    /* Islamic geometric patterns and illustrations */
+    background-image: 
+      /* Main Islamic star patterns */
+      radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 25%),
+      radial-gradient(circle at 80% 30%, rgba(34, 197, 94, 0.06) 0%, transparent 30%),
+      radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 35%),
+      radial-gradient(circle at 70% 80%, rgba(16, 185, 129, 0.07) 0%, transparent 40%),
+      
+      /* Islamic geometric overlay patterns */
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 50px,
+        rgba(16, 185, 129, 0.015) 50px,
+        rgba(16, 185, 129, 0.015) 52px
+      ),
+      repeating-linear-gradient(
+        60deg,
+        transparent,
+        transparent 45px,
+        rgba(34, 197, 94, 0.012) 45px,
+        rgba(34, 197, 94, 0.012) 47px
+      ),
+      repeating-linear-gradient(
+        120deg,
+        transparent,
+        transparent 45px,
+        rgba(59, 130, 246, 0.01) 45px,
+        rgba(59, 130, 246, 0.01) 47px
+      ),
+      
+      /* Subtle Islamic arabesque pattern */
+      repeating-conic-gradient(
+        from 0deg at 50% 50%,
+        transparent 0deg,
+        rgba(16, 185, 129, 0.008) 45deg,
+        transparent 90deg,
+        rgba(34, 197, 94, 0.006) 135deg,
+        transparent 180deg
+      ) !important;
+    
+    min-height: 100vh !important;
+    padding: 1rem 1.5rem 2rem 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    text-align: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  /* Islamic decorative elements for tablet */
+  #home::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 6%;
+    width: 70px;
+    height: 70px;
+    border: 2px solid rgba(16, 185, 129, 0.15);
+    border-radius: 50%;
+    transform: rotate(15deg);
+    z-index: 1;
+    animation: float 5s ease-in-out infinite;
+  }
+
+  #home::after {
+    content: '';
+    position: absolute;
+    top: 12%;
+    right: 8%;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.08));
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    transform: rotate(-12deg);
+    z-index: 1;
+    animation: floatReverse 4s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  /* Hide desktop background on tablet */
+  #home .absolute.inset-0.z-0.hidden.md\:block {
+    display: none !important;
+  }
+
+  /* Hide desktop decorative elements on tablet */
+  #home .absolute.top-0.left-0.w-full.h-full.overflow-hidden.z-10.opacity-30.hidden.md\:block {
+    display: none !important;
+  }
+  
+  #home .container {
+    margin-top: 5rem !important; /* Space for header */
+    padding-top: 1rem !important;
+    padding-bottom: 2rem !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  /* Single column layout for tablet - like mobile */
+  #home .flex.flex-col.md\:flex-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Text content styling for tablet - mobile-like */
+  .hero-content {
+    width: 100% !important;
+    max-width: 550px !important;
+    padding: 0 1rem !important;
+    text-align: center !important;
+    margin-bottom: 2rem !important;
+    color: #1f2937 !important;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.75rem !important; /* 44px - larger for tablet */
+    line-height: 1.1 !important;
+    margin-bottom: 1rem !important;
+    color: #064e3b !important; /* deep green for Islamic feel */
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(6, 78, 59, 0.1) !important;
+  }
+  
+  .hero-content p {
+    font-size: 1.125rem !important; /* 18px - larger for tablet */
+    line-height: 1.6 !important;
+    margin-bottom: 1.5rem !important;
+    color: #4b5563 !important;
+    font-weight: 400 !important;
+  }
+  
+  /* Badge styling for tablet - mobile-like */
+  .hero-content .inline-flex {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 253, 250, 0.95) 100%) !important;
+    color: #065f46 !important;
+    border: 1px solid rgba(16, 185, 129, 0.15) !important;
+    padding: 0.625rem 1.25rem !important;
+    font-size: 0.875rem !important;
+    margin-bottom: 1.5rem !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 1rem !important;
+    box-shadow: 
+      0 4px 12px rgba(16, 185, 129, 0.08),
+      0 2px 4px rgba(0, 0, 0, 0.02) !important;
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Button adjustments for tablet - mobile-like */
+  .hero-buttons {
+    flex-direction: column !important;
+    gap: 0.875rem !important;
+    width: 100% !important;
+    margin-top: 1.5rem !important;
+    max-width: 400px !important;
+  }
+  
+  .hero-buttons a {
+    width: 100% !important;
+    padding: 0.875rem 2rem !important;
+    font-size: 1rem !important;
+    border-radius: 1rem !important;
+    min-height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Primary button - Enhanced with gradient and glow */
+  .hero-buttons a:first-child {
+    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: 
+      0 8px 24px rgba(16, 185, 129, 0.25),
+      0 4px 8px rgba(5, 150, 105, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    border: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-buttons a:first-child:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 
+      0 12px 32px rgba(16, 185, 129, 0.35),
+      0 6px 12px rgba(5, 150, 105, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  }
+
+  /* Secondary button - Glass morphism style */
+  .hero-buttons a:last-child {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px) !important;
+    color: #047857 !important;
+    font-weight: 600 !important;
+    border: 1.5px solid rgba(16, 185, 129, 0.2) !important;
+    box-shadow: 
+      0 6px 16px rgba(0, 0, 0, 0.04),
+      0 2px 6px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .hero-buttons a:last-child:hover {
+    background: rgba(240, 253, 250, 0.95) !important;
+    border-color: rgba(16, 185, 129, 0.35) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 
+      0 8px 20px rgba(0, 0, 0, 0.06),
+      0 4px 8px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  .hero-buttons a svg {
+    width: 1.125rem !important;
+    height: 1.125rem !important;
+    margin-left: 0.5rem !important;
+  }
+  
+  /* Hide desktop image on tablet */
+  #home .md\:w-2\/5 {
+    display: none !important;
+  }
+  
+  /* Show tablet image section - mobile-like */
+  #home .w-full.max-w-sm.mx-auto.mt-12.md\:hidden {
+    display: block !important;
+    max-width: 24rem !important; /* Larger for tablet */
+    margin-top: 2.5rem !important;
+  }
+
+  /* Tablet card enhancements with Islamic touches */
+  #home .relative.bg-white\/80 {
+    backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 
+      0 16px 32px rgba(0, 0, 0, 0.06),
+      0 6px 12px rgba(16, 185, 129, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+    position: relative;
+    overflow: visible;
+    padding: 2rem !important; /* Larger padding for tablet */
+  }
+
+  /* Add Islamic geometric border decoration to tablet card */
+  #home .relative.bg-white\/80::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, 
+      rgba(16, 185, 129, 0.1) 0%,
+      rgba(34, 197, 94, 0.08) 25%,
+      rgba(59, 130, 246, 0.06) 50%,
+      rgba(16, 185, 129, 0.1) 75%,
+      rgba(34, 197, 94, 0.08) 100%
+    );
+    border-radius: 2rem;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  #home .relative.bg-white\/80:hover::before {
+    opacity: 1;
+  }
+
+  /* Hide scroll indicator on tablet */
+  #home .scroll-indicator {
+    display: none !important;
+  }
+  
+  /* Additional geometric decorations for tablet */
+  .hero-content::before {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    left: -8%;
+    width: 60px;
+    height: 60px;
+    background: rgba(16, 185, 129, 0.08);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    transform: rotate(25deg);
+    z-index: 0;
+  }
+
+  .hero-content::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+    width: 45px;
+    height: 45px;
+    border: 2px solid rgba(34, 197, 94, 0.12);
+    transform: rotate(45deg);
+    z-index: 0;
+  }
+
+  /* Floating animations for tablet decorative elements */
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(15deg); }
+    50% { transform: translateY(-12px) rotate(15deg); }
+  }
+
+  @keyframes floatReverse {
+    0%, 100% { transform: translateY(0) rotate(-12deg); }
+    50% { transform: translateY(-10px) rotate(-12deg); }
+  }
+  
+  /* Card layouts for tablet */
+  .card {
+    padding: 2rem !important;
+  }
+  
+  /* Improve touch targets for tablet */
+  button, 
+  .btn,
+  a.btn {
+    min-height: 48px !important;
+    min-width: 48px !important;
+    padding: 0.75rem 1.5rem !important;
+  }
+  
+  /* Enhanced animations for tablet menu */
+  .animate-slideDown {
+    animation: slideDown 0.3s ease-out forwards;
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.2s ease-out forwards;
+  }
+}
+
+/* Animation keyframes */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Additional tablet-specific optimizations */
+@media (min-width: 641px) and (max-width: 1023px) {
+  /* Landscape tablet adjustments */
+  @media (orientation: landscape) {
+    .hero-content {
+      padding-top: 2rem !important;
+      padding-bottom: 2rem !important;
+    }
+    
+    .lg\:hidden .relative.z-50 .px-4 {
+      padding-top: 1rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+    
+    .lg\:hidden nav a {
+      padding: 0.75rem 1.25rem !important;
+      font-size: 1rem !important;
+    }
+  }
+  
+  /* Portrait tablet adjustments */
+  @media (orientation: portrait) {
+    .hero-content h1 {
+      font-size: 3rem !important; /* 48px */
+    }
+    
+    .lg\:hidden nav a {
+      padding: 1.25rem 1.5rem !important;
+    }
+  }
+}
+
+/* Animation keyframes */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Additional tablet-specific optimizations */
+@media (min-width: 641px) and (max-width: 1023px) {
+  /* Landscape tablet adjustments */
+  @media (orientation: landscape) {
+    .hero-content {
+      padding-top: 2rem !important;
+      padding-bottom: 2rem !important;
+    }
+    
+    .lg\:hidden .relative.z-50 .px-4 {
+      padding-top: 1rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+    
+    .lg\:hidden nav a {
+      padding: 0.75rem 1.25rem !important;
+      font-size: 1rem !important;
+    }
+  }
+  
+  /* Portrait tablet adjustments */
+  @media (orientation: portrait) {
+    .hero-content h1 {
+      font-size: 3rem !important; /* 48px */
+    }
+    
+    .lg\:hidden nav a {
+      padding: 1.25rem 1.5rem !important;
+    }
+  }
+}
+
+/* Animation keyframes */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Additional tablet-specific optimizations */
+@media (min-width: 641px) and (max-width: 1023px) {
+  /* Landscape tablet adjustments */
+  @media (orientation: landscape) {
+    .hero-content {
+      padding-top: 2rem !important;
+      padding-bottom: 2rem !important;
+    }
+    
+    .lg\:hidden .relative.z-50 .px-4 {
+      padding-top: 1rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+    
+    .lg\:hidden nav a {
+      padding: 0.75rem 1.25rem !important;
+      font-size: 1rem !important;
+    }
+  }
+  
+  /* Portrait tablet adjustments */
+  @media (orientation: portrait) {
+    .hero-content h1 {
+      font-size: 3rem !important; /* 48px */
+    }
+    
+    .lg\:hidden nav a {
+      padding: 1.25rem 1.5rem !important;
+    }
+  }
+}
+
+/* Animation keyframes */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Additional tablet-specific optimizations */
+@media (min-width: 641px) and (max-width: 1023px) {
+  /* Landscape tablet adjustments */
+  @media (orientation: landscape) {
+    .hero-content {
+      padding-top: 2rem !important;
+      padding-bottom: 2rem !important;
+    }
+    
+    .lg\:hidden .relative.z-50 .px-4 {
+      padding-top: 1rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+    
+    .lg\:hidden nav a {
+      padding: 0.75rem 1.25rem !important;
+      font-size: 1rem !important;
+    }
+  }
+  
+  /* Portrait tablet adjustments */
+  @media (orientation: portrait) {
+    .hero-content h1 {
+      font-size: 3rem !important; /* 48px */
+    }
+    
+    .lg\:hidden nav a {
+      padding: 1.25rem 1.5rem !important;
+    }
+  }
+}
+
+/* Animation keyframes */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Large screens (Small Desktop) */
+  .container {
+    max-width: 90%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  /* Adjust grid layouts for small desktop */
+  .grid-cols-4 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* Improve image responsiveness */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure form elements are responsive */
+input, 
+select, 
+textarea {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Improve table responsiveness */
+table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-in-out;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Utility classes for responsive design */
+.hide-on-mobile {
+  @media (max-width: 640px) {
+    display: none !important;
+  }
+}
+
+.show-on-mobile {
+  display: none !important;
+  @media (max-width: 640px) {
+    display: block !important;
+  }
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  z-index: 50;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Mobile optimizations */
+/* Responsive Styles */
+@media (max-width: 640px) {
+  /* Small screens (Mobile) */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+  }
+  
+  /* Adjust spacing for mobile */
+  section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  
+  /* Improve text readability on small screens */
+  h1 {
+    font-size: 1.75rem !important;
+    line-height: 1.3;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 1.3;
+  }
+  
+  h3 {
+    font-size: 1.25rem !important;
+  }
+  
+  p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  /* Ensure buttons are easily tappable */
+  button, 
+  .btn,
+  a.btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Adjust grid layouts for mobile */
+  .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* Adjust hero section for mobile */
+  .hero-content {
+    padding: 2rem 1rem !important;
+    text-align: center;
+  }
+  
+  .hero-buttons {
+    justify-content: center !important;
+    flex-wrap: wrap;
+    gap: 0.75rem !important;
+  }
+  
+  /* Fix hero section content positioning for mobile */
+  #home .container {
+    margin-top: 7rem !important;  /* sesuai tinggi navbar */
+    padding-top: 2rem !important;
+  }
+  
+  #home .inline-block {
+    margin-top: 1.5rem !important;
+  }
+  
+  /* Menyeimbangkan posisi konten teks dan button pada mobile */
+  #home .hero-content {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: center !important;
+  }
+  
+  #home .hero-buttons {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-content: center !important;
+  }
+  
+  /* Adjust card layouts */
+  .card {
+    padding: 1.25rem !important;
+  }
+  
+  /* Adjust spacing between sections */
+  .section-gap {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  /* Adjust navigation for mobile */
+  .mobile-nav {
+    display: flex !important;
+  }
+  
+  .desktop-nav {
+    display: none !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  /* Medium screens (Tablet) */
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 100%;
+  }
+  
+  /* Adjust spacing for tablet */
+  section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+  
+  /* Typography adjustments for tablet */
+  h1 {
+    font-size: 2.25rem !important;
+    line-height: 1.3;
+  }
+  
+  h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  /* Adjust grid layouts for tablet */
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Adjust hero section for tablet */
+  .hero-content {
+    padding: 3rem 2rem !important;
+  }
+  
+  /* Adjust card layouts */
+  .card {
+    padding: 1.5rem !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Large screens (Small Desktop) */
+  .container {
+    max-width: 90%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  /* Adjust grid layouts for small desktop */
+  .grid-cols-4 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* Improve image responsiveness */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure form elements are responsive */
+input, 
+select, 
+textarea {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Improve table responsiveness */
+table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-in-out;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Utility classes for responsive design */
+.hide-on-mobile {
+  @media (max-width: 640px) {
+    display: none !important;
+  }
+}
+
+.show-on-mobile {
+  display: none !important;
+  @media (max-width: 640px) {
+    display: block !important;
+  }
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  z-index: 50;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Improve touch targets */
+  .nav-link, 
+  .footer-link {
+    padding: 0.75rem !important;
+    margin: 0.25rem 0 !important;
+    display: block;
+  }
+  
+  /* Stack items vertically */
+  .flex-col-mobile {
+    flex-direction: column !important;
+  }
+  
+  /* Center content on mobile */
+  .text-center-mobile {
+    text-align: center !important;
+  }
+  
+  /* Adjust images for mobile */
+  .mobile-img-container {
+    height: 200px !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Adjust spacing for mobile forms */
+  .form-group {
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Full width on mobile */
+  .w-full-mobile {
+    width: 100% !important;
+  }
+}
+
+.hide-on-desktop {
+  @media (min-width: 1024px) {
+    display: none !important;
+  }
+}
+
+.text-center-mobile {
+  @media (max-width: 640px) {
+    text-align: center !important;
+  }
+}
+
+/* Fix for fixed position elements on mobile */
+.fixed-element {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+/* Improve touch targets for mobile */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.hide-on-desktop {
+  @media (min-width: 1024px) {
+    display: none !important;
+  }
+}
+
+.text-center-mobile {
+  @media (max-width: 640px) {
+    text-align: center !important;
+  }
+}
+
+/* Fix for fixed position elements on mobile */
+.fixed-element {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+/* Improve touch targets for mobile */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}

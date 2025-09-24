@@ -1,0 +1,86 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "pages"
+    label: "Halaman"
+    folder: "src/content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Judul", name: "title", widget: "string" }
+      - { label: "Deskripsi SEO", name: "description", widget: "text" }
+      - { label: "Gambar Utama", name: "featured_image", widget: "image", required: false }
+      - { label: "Konten", name: "body", widget: "markdown" }
+
+  - name: "news"
+    label: "Berita"
+    folder: "src/content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Judul", name: "title", widget: "string" }
+      - { label: "Tanggal", name: "date", widget: "datetime" }
+      - { label: "Penulis", name: "author", widget: "string", default: "Admin" }
+      - { label: "Gambar Utama", name: "featured_image", widget: "image" }
+      - { label: "Ringkasan", name: "excerpt", widget: "text" }
+      - { label: "Konten", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list", default: ["berita"] }
+
+  - name: "settings"
+    label: "Pengaturan"
+    files:
+      - file: "src/content/settings/general.md"
+        label: "Pengaturan Umum"
+        name: "general"
+        fields:
+          - { label: "Nama Pesantren", name: "site_title", widget: "string" }
+          - { label: "Deskripsi Singkat", name: "site_description", widget: "text" }
+          - { label: "Logo", name: "logo", widget: "image" }
+          - { label: "Favicon", name: "favicon", widget: "image" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Telepon", name: "phone", widget: "string" }
+          - { label: "Alamat", name: "address", widget: "text" }
+          - label: "Media Sosial"
+            name: "social_media"
+            widget: "object"
+            fields:
+              - { label: "Facebook", name: "facebook", widget: "string", required: false }
+              - { label: "Instagram", name: "instagram", widget: "string", required: false }
+              - { label: "Twitter", name: "twitter", widget: "string", required: false }
+              - { label: "YouTube", name: "youtube", widget: "string", required: false }
+
+      - file: "src/content/settings/hero.md"
+        label: "Hero Section"
+        name: "hero"
+        fields:
+          - { label: "Judul", name: "title", widget: "string" }
+          - { label: "Subjudul", name: "subtitle", widget: "string" }
+          - { label: "Gambar Latar", name: "background_image", widget: "image" }
+          - label: "Tombol"
+            name: "buttons"
+            widget: "list"
+            fields:
+              - { label: "Teks", name: "text", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Jenis", name: "type", widget: "select", options: ["primary", "secondary"] }
+
+      - file: "src/content/settings/about.md"
+        label: "Tentang Kami"
+        name: "about"
+        fields:
+          - { label: "Judul", name: "title", widget: "string" }
+          - { label: "Subjudul", name: "subtitle", widget: "string" }
+          - { label: "Konten", name: "content", widget: "markdown" }
+          - { label: "Gambar", name: "image", widget: "image" }
+          - label: "Fitur"
+            name: "features"
+            widget: "list"
+            fields:
+              - { label: "Judul", name: "title", widget: "string" }
+              - { label: "Deskripsi", name: "description", widget: "text" }
+              - { label: "Ikon", name: "icon", widget: "string" }
