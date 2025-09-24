@@ -6,7 +6,6 @@ const nextConfig = {
   output: 'export',
   reactStrictMode: false, // Disable untuk static export
   trailingSlash: true,
-  distDir: 'out',
   generateEtags: false,
   poweredByHeader: false,
   images: {
@@ -28,7 +27,7 @@ const nextConfig = {
       test: /\.md$/,
       use: 'raw-loader',
     });
-    
+
     // Ignore fs module untuk browser
     if (!isServer) {
       config.resolve.fallback = {
@@ -38,12 +37,9 @@ const nextConfig = {
         crypto: false,
       };
     }
-    
+
     return config;
   },
-  // Hapus exportPathMap dan gunakan getStaticPaths di setiap halaman
-  // Ini akan memungkinkan Next.js menggunakan getStaticPaths yang sudah didefinisikan
-  // di halaman [slug].js untuk menghasilkan rute statis
 };
 
 module.exports = nextConfig;
