@@ -5,6 +5,7 @@ const nextConfig = {
   },
   output: 'export',
   reactStrictMode: true,
+  trailingSlash: true, // Tambahkan ini untuk kompatibilitas Netlify
   images: {
     domains: ['localhost', 'via.placeholder.com', 'placehold.co'],
     dangerouslyAllowSVG: true,

@@ -3,9 +3,8 @@
   publish = "out"
 
 [build.environment]
-  NODE_VERSION = "16"
-  NPM_VERSION = "8.19.3"
-  NEXT_PRIVATE_TARGET = "server"
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
 
 [[redirects]]
   from = "/admin/*"
