@@ -1,13 +1,10 @@
 [build]
-  command = "npm install --legacy-peer-deps && npm run build"
-  publish = ".next"
+  command = "npm install --legacy-peer-deps && npm run build && npm run export"
+  publish = "out"
 
 [build.environment]
   NODE_VERSION = "16"
   NPM_VERSION = "8.19.3"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
 
 [[redirects]]
   from = "/admin/*"
