@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     // Konfigurasi eksperimental lainnya jika diperlukan
   },
+  output: 'export',
   reactStrictMode: true,
   images: {
     domains: ['localhost', 'via.placeholder.com', 'placehold.co'],
