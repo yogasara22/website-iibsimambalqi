@@ -41,37 +41,9 @@ const nextConfig = {
     
     return config;
   },
-  async exportPathMap(defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
-    // Custom path mapping untuk static export
-    const pathMap = {
-      '/': { page: '/' },
-      '/news': { page: '/news' },
-      // Dynamic routes perlu didefinisikan secara eksplisit
-    };
-    
-    // Jika ada file berita, tambahkan ke path map
-    try {
-      const fs = require('fs');
-      const path = require('path');
-      const newsDir = path.join(process.cwd(), 'content', 'news');
-      
-      if (fs.existsSync(newsDir)) {
-        const newsFiles = fs.readdirSync(newsDir).filter(file => file.endsWith('.md'));
-        
-        newsFiles.forEach(file => {
-          const slug = file.replace('.md', '');
-          pathMap[`/news/${slug}`] = { 
-            page: '/news/[slug]', 
-            query: { slug } 
-          };
-        });
-      }
-    } catch (error) {
-      console.log('Warning: Could not read news directory during export');
-    }
-    
-    return pathMap;
-  },
+  // Hapus exportPathMap dan gunakan getStaticPaths di setiap halaman
+  // Ini akan memungkinkan Next.js menggunakan getStaticPaths yang sudah didefinisikan
+  // di halaman [slug].js untuk menghasilkan rute statis
 };
 
 module.exports = nextConfig;
