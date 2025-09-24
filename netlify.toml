@@ -6,8 +6,9 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+# Plugin NextJS dihapus karena menyebabkan konflik dengan static export
+# [[plugins]]
+#   package = "@netlify/plugin-nextjs"
 
 # Redirects untuk static export
 [[redirects]]
