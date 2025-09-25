@@ -61,7 +61,7 @@ const Header = () => {
             {/* Main Title - Responsive sizing for tablet */}
             <span className={`font-bold ${
               scrolled ? 'text-primary-700' : 'text-white drop-shadow-md'
-            } text-lg md:text-xl lg:text-xl transition-all duration-300 leading-tight`}>
+            } text-base md:text-lg lg:text-lg transition-all duration-300 leading-tight`}>
               IIBS Imam Balqi
             </span>
             
