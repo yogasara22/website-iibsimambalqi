@@ -5,12 +5,11 @@ import About from '../components/sections/About';
 import Programs from '../components/sections/Programs';
 import Facilities from '../components/sections/Facilities';
 import Gallery from '../components/sections/Gallery';
-import News from '../components/sections/News';
+import Extracurricular from '../components/sections/Extracurricular';
 import Testimonials from '../components/sections/Testimonials';
 import Contact from '../components/sections/Contact';
-import { getAllContent } from '../lib/api';
 
-export default function Home({ latestNews }) {
+export default function Home() {
   return (
     <Layout
       title="Pesantren Imam Balqi - Pendidikan Islam Berkualitas"
@@ -21,7 +20,7 @@ export default function Home({ latestNews }) {
       <Programs />
       <Facilities />
       <Gallery />
-      <News news={latestNews} />
+      <Extracurricular />
       <Testimonials />
       <Contact />
     </Layout>
@@ -29,25 +28,8 @@ export default function Home({ latestNews }) {
 }
 
 export async function getStaticProps() {
-  // Ambil 3 berita terbaru
-  const latestNews = getAllContent('news', [
-    'title',
-    'date',
-    'slug',
-    'author',
-    'featured_image',
-    'excerpt',
-  ]).slice(0, 3);
-
-  // Konversi tanggal ke string untuk menghindari error serialisasi
-  const serializedNews = latestNews.map(post => ({
-    ...post,
-    date: post.date instanceof Date ? post.date.toISOString() : post.date
-  }));
-
   return {
     props: {
-      latestNews: serializedNews,
     }
   };
 }

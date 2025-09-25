@@ -12,7 +12,6 @@ const Navigation = ({ mobile = false, scrolled = false }) => {
     { label: 'Program', path: '/#programs', id: 'programs', icon: 'book' },
     { label: 'Fasilitas', path: '/#facilities', id: 'facilities', icon: 'building' },
     { label: 'Galeri', path: '/#gallery', id: 'gallery', icon: 'image' },
-    { label: 'Berita', path: '/#news', id: 'news', icon: 'newspaper' },
     { label: 'Kontak', path: '/#contact', id: 'contact', icon: 'phone' },
   ];
   
