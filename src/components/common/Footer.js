@@ -42,39 +42,31 @@ const Footer = () => {
           <div className="text-center sm:text-left">
             <h3 className="text-sm font-semibold mb-2 text-white">Tautan</h3>
             <ul className="space-y-2">
-              <li><Link href="/#home" passHref>
-                <a className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center justify-center sm:justify-start text-sm">
+              <li><Link href="/#home" className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center justify-center sm:justify-start text-sm">
                   <span className="mr-2">
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
                   </span>
                   Beranda
-                </a>
               </Link></li>
-              <li><Link href="/#about" passHref>
-                <a className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center justify-center sm:justify-start text-sm">
+              <li><Link href="/#about" className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center justify-center sm:justify-start text-sm">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   Tentang
-                </a>
               </Link></li>
-              <li><Link href="/#programs" passHref>
-                <a className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center justify-center sm:justify-start text-sm">
+              <li><Link href="/#programs" className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center justify-center sm:justify-start text-sm">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                   Program
-                </a>
               </Link></li>
-              <li><Link href="/#gallery" passHref>
-                <a className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center justify-center sm:justify-start text-sm">
+              <li><Link href="/#gallery" className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center justify-center sm:justify-start text-sm">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                   Galeri
-                </a>
               </Link></li>
             </ul>
           </div>

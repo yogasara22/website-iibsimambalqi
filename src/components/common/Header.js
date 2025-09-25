@@ -46,7 +46,7 @@ const Header = () => {
         : 'bg-gradient-to-r from-primary-800/90 to-primary-700/90 backdrop-blur-sm py-3 md:py-4'
     }`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" passHref><a className="flex items-center group">
+        <Link href="/" className="flex items-center group">
           {/* Logo Container - Enhanced responsive sizing for tablet */}
           <div className="relative overflow-hidden rounded-full bg-white/90 shadow-md p-1 transition-all duration-300 group-hover:shadow-lg group-hover:bg-white">
             <img 
@@ -58,21 +58,23 @@ const Header = () => {
           
           {/* Text Container - Enhanced responsive design for tablet */}
           <div className="ml-2 md:ml-3 transition-all duration-300">
-            {/* Main Title - Responsive sizing for tablet */}
-            <span className={`font-bold ${
-              scrolled ? 'text-primary-700' : 'text-white drop-shadow-md'
-            } text-base md:text-lg lg:text-lg transition-all duration-300 leading-tight`}>
-              IIBS Imam Balqi
-            </span>
-            
-            {/* Subtitle - Visible on tablet and desktop */}
-            <p className={`text-xs ${
-              scrolled ? 'text-primary-600' : 'text-white/90'
-            } font-medium mt-0.5 hidden md:block lg:block transition-all duration-300`}>
-              International Islamic Boarding School
-            </p>
+            <div className="flex flex-col">
+              {/* Main Title - Responsive sizing for tablet */}
+              <span className={`font-bold ${
+                scrolled ? 'text-primary-700' : 'text-white drop-shadow-md'
+              } text-base md:text-lg lg:text-lg transition-all duration-300 leading-none`}>
+                IIBS Imam Balqi
+              </span>
+              
+              {/* Subtitle - Visible on tablet and desktop */}
+              <p className={`text-xs ${
+                scrolled ? 'text-primary-600' : 'text-white/90'
+              } font-medium mt-0.5 hidden md:block lg:block transition-all duration-300 whitespace-nowrap`}>
+                International Islamic Boarding School
+              </p>
+            </div>
           </div>
-        </a></Link>
+        </Link>
 
         {/* Desktop Navigation - Only visible on large screens (1024px+) */}
         <div className="hidden lg:block">

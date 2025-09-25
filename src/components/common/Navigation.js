@@ -22,7 +22,7 @@ const Navigation = ({ mobile = false, scrolled = false }) => {
 
   const navClasses = mobile
     ? 'flex flex-col space-y-2'
-    : 'flex items-center space-x-1 md:space-x-2 flex-wrap justify-center md:justify-start';
+    : 'flex items-center space-x-0.5 md:space-x-1 flex-nowrap justify-center md:justify-start';
 
   // Fungsi untuk mendapatkan class untuk mobile
   const getMobileClasses = (isActive) => {
@@ -97,8 +97,7 @@ const Navigation = ({ mobile = false, scrolled = false }) => {
   return (
     <nav className={navClasses}>
       {navItems.map((item) => (
-        <Link href={item.path} key={item.path} passHref>
-          <a className={linkClasses(item.path)}>
+        <Link href={item.path} key={item.path} className={linkClasses(item.path)}>
             {mobile ? (
               <div className="flex items-center">
                 <span className="text-primary-500">{getIcon(item.icon)}</span>
@@ -107,14 +106,13 @@ const Navigation = ({ mobile = false, scrolled = false }) => {
             ) : (
               <span>{item.label}</span>
             )}
-          </a>
         </Link>
       ))}
       
       {!mobile && (
         <a 
           href="https://wa.me/6285183141854" 
-          className={`ml-2 px-4 py-2 rounded-full font-medium bg-primary-600 text-white hover:bg-primary-700 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out text-sm flex items-center`}
+          className={`ml-1 px-3 py-2 rounded-full font-medium bg-primary-600 text-white hover:bg-primary-700 shadow-md hover:shadow-lg transition-all duration-200 ease-in-out text-sm flex items-center whitespace-nowrap`}
         >
           <span>Daftar Sekarang</span>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
