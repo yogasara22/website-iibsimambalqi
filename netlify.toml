@@ -1,16 +1,11 @@
 [build]
-  command = "CI= npm run build"
+  command = "npm run build"
   publish = "out"
-
-[dev]
-  command = "npm run dev"
-  port = 3000
-  publish = "src"
 
 [build.environment]
   NODE_VERSION = "18"
   NPM_VERSION = "9"
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  NETLIFY_USE_YARN = "false"
 
 # Redirects untuk static export
 [[redirects]]
@@ -18,5 +13,8 @@
   to = "/admin/index.html"
   status = 200
 
-# Jangan gunakan fallback SPA untuk Next.js
-# Biarkan Next.js menangani routing
+# Fallback untuk SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
