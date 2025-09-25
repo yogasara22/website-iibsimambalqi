@@ -9,6 +9,15 @@ const nextConfig = {
   trailingSlash: true,
   generateEtags: false,
   poweredByHeader: false,
+  exportPathMap: async function() {
+    return {
+      '/': { page: '/' },
+      '/news': { page: '/news' },
+      '/news/2023-08-15-penerimaan-santri-baru': { page: '/news/[slug]', query: { slug: '2023-08-15-penerimaan-santri-baru' } },
+      '/news/2023-09-10-prestasi-lomba-tahfidz': { page: '/news/[slug]', query: { slug: '2023-09-10-prestasi-lomba-tahfidz' } },
+      '/news/2023-10-20-kunjungan-studi-ke-universitas': { page: '/news/[slug]', query: { slug: '2023-10-20-kunjungan-studi-ke-universitas' } },
+    };
+  },
   images: {
     domains: ['localhost', 'via.placeholder.com', 'placehold.co'],
     dangerouslyAllowSVG: true,

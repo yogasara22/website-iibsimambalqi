@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "CI= npm run build"
   publish = "out"
 
 [dev]
@@ -10,11 +10,7 @@
 [build.environment]
   NODE_VERSION = "18"
   NPM_VERSION = "9"
-  NEXT_PRIVATE_TARGET = "serverless"
-
-# Plugin untuk Next.js
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 # Redirects untuk static export
 [[redirects]]
