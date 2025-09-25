@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  distDir: 'out',
-  reactStrictMode: false, // Disable untuk static export
+  reactStrictMode: false,
   trailingSlash: true,
   generateEtags: false,
   poweredByHeader: false,

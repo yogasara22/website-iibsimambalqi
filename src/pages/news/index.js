@@ -135,47 +135,49 @@ export default function NewsIndex({ allPosts, allTags }) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {currentPosts.length > 0 ? currentPosts.map((post) => (
               <div key={post.slug} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-                <Link href={`/news/${post.slug}`}>
-                  <div className="relative h-52 w-full">
-                    <Image
-                      src={post.featured_image}
-                      alt={post.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      style={{ objectFit: 'cover' }}
-                      className="transition-transform duration-500 hover:scale-105"
-                      fetchpriority="auto"
-                    />
-                    {post.tags && post.tags.length > 0 && (
-                      <div className="absolute top-3 right-3 bg-primary-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                <Link href={`/news/${post.slug}`} passHref legacyBehavior>
+                  <a className="block">
+                    <div className="relative h-52 w-full">
+                      <Image
+                        src={post.featured_image}
+                        alt={post.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        style={{ objectFit: 'cover' }}
+                        className="transition-transform duration-500 hover:scale-105"
+                        fetchpriority="auto"
+                      />
+                      {post.tags && post.tags.length > 0 && (
+                        <div className="absolute top-3 right-3 bg-primary-600 text-white text-xs font-bold px-3 py-1 rounded-full">
                         {post.tags[0]}
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-center text-sm text-gray-600 mb-3">
+                        <span className="flex items-center mr-4">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                          {formatDate(post.date)}
+                        </span>
+                        <span className="flex items-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                          </svg>
+                          {post.author}
+                        </span>
                       </div>
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center text-sm text-gray-600 mb-3">
-                      <span className="flex items-center mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      <h3 className="text-xl font-semibold text-primary-900 mb-3 line-clamp-2 hover:text-primary-600 transition-colors">{post.title}</h3>
+                      <p className="text-gray-700 line-clamp-3 mb-4">{post.excerpt}</p>
+                      <div className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center group">
+                        Baca selengkapnya
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
-                        {formatDate(post.date)}
-                      </span>
-                      <span className="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                        {post.author}
-                      </span>
+                      </div>
                     </div>
-                    <h3 className="text-xl font-semibold text-primary-900 mb-3 line-clamp-2 hover:text-primary-600 transition-colors">{post.title}</h3>
-                    <p className="text-gray-700 line-clamp-3 mb-4">{post.excerpt}</p>
-                    <div className="text-primary-600 font-medium hover:text-primary-700 inline-flex items-center group">
-                      Baca selengkapnya
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </div>
-                  </div>
+                  </a>
                 </Link>
               </div>
             )) : (

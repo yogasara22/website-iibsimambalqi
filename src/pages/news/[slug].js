@@ -85,11 +85,13 @@ export default function NewsDetail({ post, morePosts }) {
           <nav className="flex mb-6 text-sm" aria-label="Breadcrumb">
             <ol className="inline-flex items-center space-x-1 md:space-x-3">
               <li className="inline-flex items-center">
-                <Link href="/" className="text-gray-600 hover:text-primary-600 inline-flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
-                  Beranda
+                <Link href="/" passHref legacyBehavior>
+                  <a className="text-gray-600 hover:text-primary-600 inline-flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    Beranda
+                  </a>
                 </Link>
               </li>
               <li>
@@ -97,7 +99,9 @@ export default function NewsDetail({ post, morePosts }) {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                  <Link href="/news" className="ml-1 text-gray-600 hover:text-primary-600 md:ml-2">Berita</Link>
+                  <Link href="/news" passHref legacyBehavior>
+                    <a className="ml-1 text-gray-600 hover:text-primary-600 md:ml-2">Berita</a>
+                  </Link>
                 </div>
               </li>
               <li aria-current="page">
@@ -286,48 +290,52 @@ export default function NewsDetail({ post, morePosts }) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {morePosts.map((post) => (
                 <div key={post.slug} className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                  <Link href={`/news/${post.slug}`} className="block h-full">
-                    <div className="relative h-52 w-full overflow-hidden">
-                      <Image
-                        src={post.featured_image}
-                        alt={post.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
-                        style={{ objectFit: 'cover' }}
-                        fetchpriority="auto"
-                        className="transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center text-sm text-gray-500 mb-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        {formatDate(post.date)}
+                  <Link href={`/news/${post.slug}`} passHref legacyBehavior>
+                    <a className="block h-full">
+                      <div className="relative h-52 w-full overflow-hidden">
+                        <Image
+                          src={post.featured_image}
+                          alt={post.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                          style={{ objectFit: 'cover' }}
+                          fetchpriority="auto"
+                          className="transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
-                      <h3 className="text-xl font-bold text-primary-900 mb-3 line-clamp-2 group-hover:text-primary-600 transition-colors duration-300">{post.title}</h3>
-                      <p className="text-gray-600 line-clamp-3 mb-4">{post.excerpt}</p>
-                      <div className="flex items-center text-primary-600 font-medium group-hover:text-primary-700 transition-colors duration-300">
-                        <span>Baca selengkapnya</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
+                      <div className="p-6">
+                        <div className="flex items-center text-sm text-gray-500 mb-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                          {formatDate(post.date)}
+                        </div>
+                        <h3 className="text-xl font-bold text-primary-900 mb-3 line-clamp-2 group-hover:text-primary-600 transition-colors duration-300">{post.title}</h3>
+                        <p className="text-gray-600 line-clamp-3 mb-4">{post.excerpt}</p>
+                        <div className="flex items-center text-primary-600 font-medium group-hover:text-primary-700 transition-colors duration-300">
+                          <span>Baca selengkapnya</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </div>
                       </div>
-                    </div>
+                    </a>
                   </Link>
                 </div>
               ))}
             </div>
             
             <div className="text-center mt-12">
-              <Link href="/news" className="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-full transition-colors duration-300 shadow-md hover:shadow-lg">
-                <span>Lihat Semua Berita</span>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+              <Link href="/news" passHref legacyBehavior>
+                <a className="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-full transition-colors duration-300 shadow-md hover:shadow-lg">
+                  <span>Lihat Semua Berita</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
               </Link>
-            </div>
+              </div>
           </div>
         </section>
       )}
