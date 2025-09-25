@@ -4,6 +4,7 @@ const nextConfig = {
     // Konfigurasi eksperimental lainnya jika diperlukan
   },
   output: 'export',
+  distDir: 'out',
   reactStrictMode: false, // Disable untuk static export
   trailingSlash: true,
   generateEtags: false,
