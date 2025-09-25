@@ -97,15 +97,17 @@ const Navigation = ({ mobile = false, scrolled = false }) => {
   return (
     <nav className={navClasses}>
       {navItems.map((item) => (
-        <Link href={item.path} key={item.path} className={linkClasses(item.path)}>
-          {mobile ? (
-            <div className="flex items-center">
-              <span className="text-primary-500">{getIcon(item.icon)}</span>
-              <span className="ml-3">{item.label}</span>
-            </div>
-          ) : (
-            <span>{item.label}</span>
-          )}
+        <Link href={item.path} key={item.path} passHref>
+          <a className={linkClasses(item.path)}>
+            {mobile ? (
+              <div className="flex items-center">
+                <span className="text-primary-500">{getIcon(item.icon)}</span>
+                <span className="ml-3">{item.label}</span>
+              </div>
+            ) : (
+              <span>{item.label}</span>
+            )}
+          </a>
         </Link>
       ))}
       

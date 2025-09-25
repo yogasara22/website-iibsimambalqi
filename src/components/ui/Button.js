@@ -29,7 +29,7 @@ const Button = ({
   
   if (href) {
     return (
-      <Link href={href}>
+      <Link href={href} passHref>
         <a className={classes} {...props}>
           {children}
         </a>

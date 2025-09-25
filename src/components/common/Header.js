@@ -46,7 +46,7 @@ const Header = () => {
         : 'bg-gradient-to-r from-primary-800/90 to-primary-700/90 backdrop-blur-sm py-3 md:py-4'
     }`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center group">
+        <Link href="/" passHref><a className="flex items-center group">
           {/* Logo Container - Enhanced responsive sizing for tablet */}
           <div className="relative overflow-hidden rounded-full bg-white/90 shadow-md p-1 transition-all duration-300 group-hover:shadow-lg group-hover:bg-white">
             <img 
@@ -72,7 +72,7 @@ const Header = () => {
               International Islamic Boarding School
             </p>
           </div>
-        </Link>
+        </a></Link>
 
         {/* Desktop Navigation - Only visible on large screens (1024px+) */}
         <div className="hidden lg:block">
