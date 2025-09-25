@@ -4,6 +4,7 @@ const nextConfig = {
   trailingSlash: true,
   generateEtags: false,
   poweredByHeader: false,
+  swcMinify: true,
   images: {
     domains: ['localhost', 'via.placeholder.com', 'placehold.co'],
     dangerouslyAllowSVG: true,
