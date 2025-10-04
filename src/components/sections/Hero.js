@@ -8,7 +8,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0 hidden md:block">
         <div className="absolute inset-0 bg-gradient-to-r from-primary-900/90 to-primary-800/80 mix-blend-multiply"></div>
         <img 
-          src="/images/hero/hero-bg.jpg" 
+          src="/images/hero/hero-bg.webp" 
           alt="Background" 
           className="w-full h-full object-cover"
         />
@@ -115,7 +115,7 @@ const Hero = () => {
               {/* Gambar dengan efek bayangan dalam */}
               <div className="relative z-10 rounded-lg overflow-hidden shadow-inner border border-white">
                 <img 
-                  src="/images/hero/hero-santri.png" 
+                  src="/images/hero/hero-santri.webp" 
                   alt="Santri Pesantren" 
                   className="w-full h-auto rounded transform hover:scale-105 transition-all duration-700 filter brightness-105"
                 />

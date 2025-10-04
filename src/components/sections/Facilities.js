@@ -5,21 +5,21 @@ const Facilities = () => {
     {
       name: 'Asrama Nyaman',
       description: 'Asrama terpisah untuk santri putra dan putri dengan fasilitas lengkap dan lingkungan yang nyaman untuk mendukung kehidupan sehari-hari.',
-      image: '/images/facilities/asrama.jpg',
+      image: '/images/facilities/asrama.webp',
       icon: '🏠',
       features: ['AC & WiFi', 'Kamar Mandi Dalam', 'Area Belajar']
     },
     {
       name: 'Masjid',
       description: 'Masjid sebagai pusat kegiatan ibadah dan pembelajaran Al-Qur\'an dengan kapasitas besar dan arsitektur yang indah.',
-      image: '/images/facilities/masjid.jpg',
+      image: '/images/facilities/masjid.webp',
       icon: '🕌',
       features: ['Kapasitas 500+', 'Sound System', 'Perpustakaan']
     },
     {
       name: 'Kelas Belajar',
       description: 'Kelas belajar yang nyaman dirancang khusus untuk mendukung pembelajaran santri dengan teknologi modern.',
-      image: '/images/facilities/kelas.jpg',
+      image: '/images/facilities/ruangan-kelas.webp',
       icon: '📚',
       features: ['Proyektor HD', 'AC & Ventilasi', 'Meja Ergonomis']
     },

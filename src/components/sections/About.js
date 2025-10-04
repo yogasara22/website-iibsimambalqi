@@ -102,7 +102,7 @@ const About = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-green-50/10 pointer-events-none"></div>
                 
                 <img 
-                  src="/images/abouts/about-pesantren.jpg" 
+                  src="/images/abouts/about-pesantren.webp" 
                   alt="Pesantren" 
                   className="w-full h-auto transform transition-transform duration-500 group-hover:scale-105 filter brightness-105 contrast-95"
                   onError={(e) => {
@@ -120,7 +120,7 @@ const About = () => {
               <div className="absolute -bottom-8 left-4 right-4 h-8 bg-gradient-to-b from-green-100/20 to-transparent rounded-b-[2rem] blur-sm opacity-40"></div>
             </div>
             
-            {/* Quote Card */}
+            {/* Kurikulum Card */}
             <div className="group relative bg-gradient-to-br from-primary-50 via-white to-green-50/30 p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-primary-100/50 overflow-hidden transform hover:-translate-y-2">
               {/* Card Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-green-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
@@ -129,17 +129,72 @@ const About = () => {
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-green-500"></div>
               
               <div className="relative">
-                {/* Quote Icon */}
+                {/* Icon */}
                 <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-primary-500 to-green-500 rounded-2xl mb-4 shadow-lg">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 </div>
                 
-                <blockquote className="text-xl font-medium text-gray-700 italic mb-4 leading-relaxed">
-                  "Pendidikan terbaik adalah yang menggabungkan ilmu dunia dan akhirat, membentuk generasi yang berakhlak mulia dan berprestasi."
-                </blockquote>
-                <cite className="text-primary-600 font-semibold">- Filosofi {SITE_NAME}</cite>
+                <h3 className="text-2xl font-bold text-gray-800 mb-6 group-hover:text-primary-600 transition-colors duration-300">
+                  Kurikulum IIBSA
+                </h3>
+                
+                <div className="space-y-6">
+                  {/* Kurikulum Internasional */}
+                  <div className="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+                    <div className="flex items-center mb-3">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-primary-500 to-green-500 flex items-center justify-center mr-3">
+                        <span className="text-white text-sm font-bold">1</span>
+                      </div>
+                      <h4 className="text-lg font-semibold text-gray-800">Kurikulum Internasional</h4>
+                    </div>
+                    <ul className="ml-11 space-y-2">
+                      {["Cambridge Assessment English", "Tahfidz International Curriculum"].map((item, index) => (
+                        <li key={index} className="flex items-start">
+                          <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-primary-500 mt-2 mr-2"></div>
+                          <span className="text-gray-700">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  {/* Kurikulum Ulumuddin/Pesantren */}
+                  <div className="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+                    <div className="flex items-center mb-3">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-primary-500 to-green-500 flex items-center justify-center mr-3">
+                        <span className="text-white text-sm font-bold">2</span>
+                      </div>
+                      <h4 className="text-lg font-semibold text-gray-800">Kurikulum Ulumuddin/Pesantren</h4>
+                    </div>
+                    <ul className="ml-11 space-y-2">
+                      {["Iman, Adab, Aqidah, Fiqh"].map((item, index) => (
+                        <li key={index} className="flex items-start">
+                          <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-primary-500 mt-2 mr-2"></div>
+                          <span className="text-gray-700">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  {/* Kurikulum Nasional */}
+                  <div className="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
+                    <div className="flex items-center mb-3">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-primary-500 to-green-500 flex items-center justify-center mr-3">
+                        <span className="text-white text-sm font-bold">3</span>
+                      </div>
+                      <h4 className="text-lg font-semibold text-gray-800">Kurikulum Nasional</h4>
+                    </div>
+                    <ul className="ml-11 space-y-2">
+                      {["Lulus standar UN Indonesia"].map((item, index) => (
+                        <li key={index} className="flex items-start">
+                          <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-primary-500 mt-2 mr-2"></div>
+                          <span className="text-gray-700">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -167,12 +222,12 @@ const About = () => {
                   Visi Kami
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  {SITE_NAME} adalah lembaga pendidikan Islam yang berfokus pada pembentukan karakter dan pengembangan potensi santri melalui pendekatan pendidikan yang komprehensif dan modern.
+                  Menjadi Lembaga Pendidikan Islam berbasis Iman dan Adab, Mandiri, Cakap dan Unggul yang mampu bersaing secara Global dalam menghadapi tantangan zaman.
                 </p>
               </div>
             </div>
             
-            {/* Sejarah Card */}
+            {/* Misi Card */}
             <div className="group relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden transform hover:-translate-y-2">
               {/* Card Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-green-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
@@ -189,15 +244,27 @@ const About = () => {
                 </div>
                 
                 <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-primary-600 transition-colors duration-300">
-                  Sejarah Kami
+                  Misi
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Kami merupakan satu-satunya lembaga pendidikan Islam formal di Kampung Inggris Pare yang menggabungkan Tahfidz International Curriculum (TIC), kurikulum Ulumuddin dan kurikulum Pendidikan Nasional. Santri bermukim di pondok, tapi sekolah formal setingkat Sekolah Menengah Atas (SMA).
-                </p>
+                  <ul className="space-y-3">
+                    {[
+                      "Menjadi Lembaga Pendidikan Islam yang memadukan kurikulum pendidikan nasional, internasional dan pesantren.",
+                      "Menjadi Lembaga studi Al-Qur'an dan kitab para ulama bersanad secara sistematis berbasis iman dan adab sebagai dasar pembelajaran.",
+                      "Mencetak anak bangsa yang mandiri, tangguh, cakap dan mampu menjadi teladan berakhlakul karimah yang siap menghadapi perkembangan zaman.",
+                      "Menjadi Lembaga Pendidikan Islam yang kredibel dan berkualitas dalam menyediakan sistem pembelajaran aktif, menyenangkan dan bermutu tinggi pada penguasaan Imtaq dan Iptek."
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start">
+                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r from-primary-500 to-green-500 flex items-center justify-center mr-3 mt-0.5">
+                          <span className="text-white text-xs font-bold">{index + 1}</span>
+                        </div>
+                        <span className="text-gray-700">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
               </div>
             </div>
             
-            {/* Komitmen Card */}
+            {/* Tujuan Card */}
             <div className="group relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden transform hover:-translate-y-2">
               {/* Card Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-green-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
@@ -214,11 +281,23 @@ const About = () => {
                 </div>
                 
                 <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-primary-600 transition-colors duration-300">
-                  Komitmen Kami
+                  Tujuan
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Dengan lingkungan yang kondusif dan tenaga pengajar yang berkualitas, kami berupaya memberikan pendidikan terbaik untuk masa depan para santri dengan standar internasional.
-                </p>
+                <ul className="space-y-3">
+                  {[
+                    "Mencetak para penghafal Al-Qur'an bersanad yang mandiri mampu bersaing Global dalam perkembangan Imtaq dan Iptek.",
+                    "Menyediakan kurikulum Lembaga Pendidikan Islam yang komprehensif untuk mendidik santri unggul dalam prestasi akademik maupun agama.",
+                    "Sebagai tempat menempa kecerdasan, kemandirian, kecakapan, keberanian dan kedisiplinan.",
+                    "Memfasilitasi santri dalam penguasaan bahasa asing, inggris dan arab sebagai bahasa pengantar pendidikan dan keahlian dalam berbahasa."
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r from-primary-500 to-green-500 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-white text-xs font-bold">{index + 1}</span>
+                      </div>
+                      <span className="text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
             

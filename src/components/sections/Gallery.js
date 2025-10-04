@@ -66,7 +66,7 @@ const Gallery = () => {
               <div className="relative p-3">
                 <div className="relative overflow-hidden rounded-2xl">
                   <img 
-                    src={`/images/gallery/gallery-${item}.jpg`} 
+                    src={`/images/gallery/gallery-${item}.webp`} 
                     alt={`Gallery Image ${item}`}
                     className="w-full h-48 sm:h-52 md:h-56 object-cover transition-all duration-500 transform group-hover:scale-110"
                     onError={(e) => {
@@ -147,7 +147,7 @@ const Gallery = () => {
             {/* Image Container */}
             <div className="relative bg-white rounded-3xl overflow-hidden shadow-2xl">
               <img 
-                src={`/images/gallery/gallery-${selectedImage}.jpg`} 
+                src={`/images/gallery/gallery-${selectedImage}.webp`} 
                 alt={`Gallery Image ${selectedImage}`}
                 className="max-h-[80vh] max-w-full mx-auto object-contain"
                 onError={(e) => {
