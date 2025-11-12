@@ -8,11 +8,11 @@ const Navigation = ({ mobile = false, scrolled = false }) => {
   
   const navItems = [
     { label: 'Beranda', path: '/', id: 'home', icon: 'home' },
-    { label: 'Tentang', path: '/#about', id: 'about', icon: 'info' },
     { label: 'Program', path: '/#programs', id: 'programs', icon: 'book' },
     { label: 'Fasilitas', path: '/#facilities', id: 'facilities', icon: 'building' },
-    { label: 'Galeri', path: '/#gallery', id: 'gallery', icon: 'image' },
+    { label: 'Tentang', path: '/#about', id: 'about', icon: 'info' },
     { label: 'Kontak', path: '/#contact', id: 'contact', icon: 'phone' },
+    { label: 'Galeri', path: '/#gallery', id: 'gallery', icon: 'image' },
   ];
   
   // Mengatasi hydration error dengan memastikan rendering client-side

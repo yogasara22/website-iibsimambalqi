@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Programs = () => {
   const programs = [
@@ -81,6 +81,28 @@ const Programs = () => {
     }
   };
 
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [open]);
+
+  const openModal = (program) => {
+    setSelected(program);
+    setOpen(true);
+  };
+
+  const closeModal = () => {
+    setOpen(false);
+    setSelected(null);
+  };
+
   return (
     <section id="programs" className="py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
       {/* Enhanced Background Decorations */}
@@ -121,7 +143,13 @@ const Programs = () => {
           {programs.map((program, index) => (
             <div 
               key={index} 
-              className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 overflow-hidden"
+              className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 overflow-hidden cursor-pointer"
+              role="button"
+              tabIndex={0}
+              onClick={() => openModal(program)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') openModal(program);
+              }}
             >
               {/* Card Glow Effect */}
               <div className={`absolute inset-0 bg-gradient-to-br ${program.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
@@ -155,8 +183,98 @@ const Programs = () => {
             </div>
           ))}
         </div>
-        
-        {/* Call to Action Section */}
+
+        {/* Modal Detail Program */}
+        {open && selected && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center"
+            aria-modal="true"
+            role="dialog"
+          >
+            {/* Backdrop */}
+            <div
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+              onClick={closeModal}
+            />
+            {/* Modal Card */}
+            <div
+              className="relative z-10 w-full max-w-2xl mx-4 md:mx-0 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header dengan gradient sesuai program */}
+              <div className={`relative p-6 bg-gradient-to-r ${selected.gradient} text-white`}
+              >
+                <div className="flex items-start justify-between">
+                  <div>
+                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/20 text-white text-xs font-semibold mb-3 shadow">
+                      Program Unggulan
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold drop-shadow-sm">
+                      {selected.title}
+                    </h3>
+                  </div>
+                  <button
+                    type="button"
+                    aria-label="Tutup"
+                    onClick={closeModal}
+                    className="ml-4 inline-flex items-center justify-center h-11 w-11 rounded-full bg-white hover:bg-red-50 text-red-600 ring-2 ring-red-300 focus:outline-none focus:ring-2 focus:ring-red-400 transition"
+                    autoFocus
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              {/* Body */}
+              <div className="p-6">
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  {selected.description}
+                </p>
+
+                {/* Feature chips */}
+                {selected.features && selected.features.length > 0 && (
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-900 mb-2">Fitur Utama</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selected.features.map((f, i) => (
+                        <span
+                          key={i}
+                          className="inline-flex items-center px-3 py-1 rounded-full bg-primary-50 text-primary-700 text-xs font-medium border border-primary-200 shadow-sm"
+                        >
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* CTA */}
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="https://wa.me/6285183141854"
+                    className="inline-flex items-center px-4 py-2 rounded-xl bg-primary-600 text-white text-sm font-semibold shadow hover:bg-primary-700 transition"
+                  >
+                    Daftar Sekarang
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </a>
+                  <button
+                    type="button"
+                    onClick={closeModal}
+                    className="inline-flex items-center px-4 py-2 rounded-xl bg-white text-gray-700 text-sm font-semibold shadow border border-gray-200 hover:bg-gray-50 transition"
+                  >
+                    Tutup
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Call to Action Section
         <div className="text-center mt-16">
           <div className="inline-flex items-center px-8 py-4 bg-green-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
             <span>Daftar Sekarang</span>
@@ -164,7 +282,7 @@ const Programs = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

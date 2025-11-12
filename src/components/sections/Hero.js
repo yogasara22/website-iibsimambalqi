@@ -1,7 +1,58 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { SITE_NAME } from '../../lib/constants';
 
 const Hero = () => {
+  const slides = [
+    {
+      img: '/images/hero/video/giat-rafting.mp4',
+      badge: 'Giat Rafting',
+      caption: 'Giat Rafting',
+    },
+    {
+      img: '/images/hero/slider-2.jpeg',
+      badge: 'Mari Tumbuh Bersama',
+      caption: 'Mari Tumbuh Bersama',
+    },
+    {
+      img: '/images/hero/video/parenting-seru.mp4',
+      badge: 'Parenting Seru',
+      caption: 'Parenting Seru',
+    },
+  ];
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [progress, setProgress] = useState(0);
+
+  // Autoplay dengan progress, dapat dipause saat hover/fokus
+  useEffect(() => {
+    if (paused) return;
+    const duration = 4500; // ms
+    const stepMs = 100;
+    const steps = duration / stepMs;
+    let tick = 0;
+    const id = setInterval(() => {
+      tick++;
+      setProgress(Math.min(100, (tick / steps) * 100));
+      if (tick >= steps) {
+        setActive((prev) => (prev + 1) % slides.length);
+        tick = 0;
+        setProgress(0);
+      }
+    }, stepMs);
+    return () => clearInterval(id);
+  }, [paused, slides.length]);
+
+  const nextSlide = () => {
+    setActive((prev) => (prev + 1) % slides.length);
+    setProgress(0);
+  };
+
+  const prevSlide = () => {
+    setActive((prev) => (prev - 1 + slides.length) % slides.length);
+    setProgress(0);
+  };
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Desktop Background Image with Overlay - Hidden on mobile, visible on tablet */}
@@ -106,37 +157,143 @@ const Hero = () => {
           {/* Desktop & Tablet Image Section - Hidden on mobile */}
           <div className="w-full md:w-2/5 lg:w-2/5 relative mt-4 md:mt-0 lg:mt-0 max-w-sm mx-auto md:max-w-xs lg:max-w-sm hidden md:block lg:block">
             {/* Frame utama dengan efek glass morphism */}
-            <div className="relative z-20 bg-white/30 backdrop-blur-md p-2 md:p-3 lg:p-3 rounded-xl shadow-2xl border border-white/50 overflow-hidden transform hover:scale-105 transition-all duration-500">
+            <div className="relative z-20 bg-white/30 backdrop-blur-md p-2 md:p-3 lg:p-3 pb-6 md:pb-8 lg:pb-8 rounded-xl shadow-2xl border border-white/50 overflow-hidden transform hover:scale-105 transition-all duration-500">
               {/* Pola dekoratif di belakang gambar */}
               <div className="absolute inset-0 bg-gradient-to-tr from-primary-200/30 to-transparent z-0"></div>
               <div className="absolute top-0 right-0 w-16 h-16 bg-primary-300/40 rounded-full -mr-8 -mt-8 z-0"></div>
               <div className="absolute bottom-0 left-0 w-12 h-12 bg-secondary-300/40 rounded-full -ml-6 -mb-6 z-0"></div>
-              
-              {/* Gambar dengan efek bayangan dalam */}
-              <div className="relative z-10 rounded-lg overflow-hidden shadow-inner border border-white">
-                <img 
-                  src="/images/hero/hero-santri.webp" 
-                  alt="Santri Pesantren" 
-                  className="w-full h-auto rounded transform hover:scale-105 transition-all duration-700 filter brightness-105"
-                />
-                
+
+              {/* Gambar dengan efek bayangan dalam + carousel geser */}
+              <div
+                role="region"
+                aria-label="Hero portrait carousel"
+                tabIndex={0}
+                className="relative z-10 rounded-2xl overflow-hidden shadow-xl border border-white/60 ring-1 ring-white/30 bg-white/10 backdrop-blur-lg px-2 md:px-3 pt-4 pb-16"
+                onMouseEnter={() => setPaused(true)}
+                onMouseLeave={() => setPaused(false)}
+                onFocus={() => setPaused(true)}
+                onBlur={() => setPaused(false)}
+                onTouchStart={(e) => setTouchStartX(e.changedTouches[0]?.clientX ?? null)}
+                onTouchEnd={(e) => {
+                  const endX = e.changedTouches[0]?.clientX;
+                  if (touchStartX == null || endX == null) return;
+                  const dx = endX - touchStartX;
+                  const threshold = 40;
+                  if (dx > threshold) {
+                    prevSlide();
+                  } else if (dx < -threshold) {
+                    nextSlide();
+                  }
+                  setTouchStartX(null);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'ArrowRight') nextSlide();
+                  else if (e.key === 'ArrowLeft') prevSlide();
+                  else if (e.key === ' ') setPaused((p) => !p);
+                }}
+              >
+                {/* Track dengan aspek potret agar konten tidak terpotong */}
+                <div className="overflow-hidden rounded-xl aspect-[2/3] bg-black">
+                  <div
+                    className="flex transition-transform duration-700 ease-out"
+                    style={{ transform: `translateX(-${active * 100}%)` }}
+                  >
+                    {slides.map((s, i) => (
+                      <div key={i} className="min-w-full h-full">
+                        {(() => {
+                          const isVideo = !!s.video || (s.img && s.img.toLowerCase().endsWith('.mp4'));
+                          const src = s.video ?? (isVideo ? s.img : s.img);
+                          if (isVideo) {
+                            return (
+                              <video
+                                src={src}
+                                className="w-full h-full object-contain bg-black"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                preload="auto"
+                              />
+                            );
+                          }
+                          return (
+                            <img
+                              src={src}
+                              alt={s.badge}
+                              className="w-full h-full object-contain bg-black"
+                            />
+                          );
+                        })()}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 {/* Badge overlay */}
-                <div className="absolute top-2 right-2 bg-primary-500/90 text-white text-xs font-medium py-0.5 px-2 rounded-full shadow-lg backdrop-blur-sm">
-                  Santri Berprestasi
+                <div className="absolute top-4 right-4 bg-primary-500/90 text-white text-xs font-medium py-0.5 px-2 rounded-full shadow-lg backdrop-blur-sm">
+                  {slides[active].badge}
+                </div>
+
+                {/* Arrow Navigation dipindah ke luar frame */}
+              
+                {/* Indikator dots elegan dan lebih kecil */}
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                  {slides.map((_, i) => (
+                    <button
+                      key={i}
+                      aria-label={`Slide ${i + 1}`}
+                      aria-current={i === active}
+                      onClick={() => {
+                        setActive(i);
+                        setProgress(0);
+                      }}
+                      className={`h-2.5 w-2.5 md:h-3 md:w-3 rounded-full transition-all ${
+                        i === active
+                          ? 'bg-primary-500 shadow-md scale-110 ring-2 ring-white/70'
+                          : 'bg-white/50 hover:bg-white/70 ring-1 ring-white/50'
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                {/* Progress bar autoplay */}
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+                  <div
+                    className="h-1 bg-primary-500 transition-[width] duration-100"
+                    style={{ width: `${progress}%` }}
+                  />
                 </div>
               </div>
-              
+
               {/* Caption dengan efek glass */}
-              <div className="mt-2 bg-white/60 backdrop-blur-sm p-1.5 rounded-lg border border-white/50">
-                <p className="text-primary-800 text-xs font-medium text-center">Pendidikan karakter dan akademik yang seimbang</p>
+              <div className="mt-2 mb-4 bg-white/60 backdrop-blur-sm p-1.5 rounded-lg border border-white/50">
+                <p className="text-primary-800 text-xs font-medium text-center">{slides[active].caption}</p>
               </div>
             </div>
-            
+
+            {/* Arrow Navigation di luar frame agar tidak menutupi konten */}
+            <button
+              type="button"
+              aria-label="Sebelumnya"
+              onClick={prevSlide}
+              className="absolute -left-8 top-1/2 -translate-y-1/2 z-30 h-16 w-16 md:h-14 md:w-14 flex items-center justify-center rounded-full bg-primary-600/90 hover:bg-primary-600 text-white shadow-2xl border border-white/40 ring-2 ring-white/40 backdrop-blur-md transition-all hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary-300/60"
+            >
+              <HiChevronLeft size={44} className="pointer-events-none drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              aria-label="Berikutnya"
+              onClick={nextSlide}
+              className="absolute -right-8 top-1/2 -translate-y-1/2 z-30 h-16 w-16 md:h-14 md:w-14 flex items-center justify-center rounded-full bg-primary-600/90 hover:bg-primary-600 text-white shadow-2xl border border-white/40 ring-2 ring-white/40 backdrop-blur-md transition-all hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary-300/60"
+            >
+              <HiChevronRight size={44} className="pointer-events-none drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]" aria-hidden="true" />
+            </button>
+
             {/* Elemen dekoratif di sekitar frame */}
-            <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-primary-400/70 rounded-full filter blur-md z-10"></div>
-            <div className="absolute -top-4 -left-4 w-24 h-24 bg-secondary-300/70 rounded-full filter blur-md z-10"></div>
-            <div className="absolute top-1/2 -right-3 w-6 h-6 bg-white rounded-full shadow-lg z-30 animate-pulse"></div>
-            <div className="absolute bottom-1/3 -left-3 w-5 h-5 bg-primary-200 rounded-full shadow-lg z-30 animate-pulse delay-300"></div>
+            <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-primary-400/70 rounded-full filter blur-md z-10 pointer-events-none"></div>
+            <div className="absolute -top-4 -left-4 w-24 h-24 bg-secondary-300/70 rounded-full filter blur-md z-10 pointer-events-none"></div>
+            <div className="absolute top-1/2 -right-10 w-6 h-6 bg-white rounded-full shadow-lg z-10 animate-pulse pointer-events-none"></div>
+            <div className="absolute bottom-1/3 -left-3 w-5 h-5 bg-primary-200 rounded-full shadow-lg z-10 animate-pulse delay-300 pointer-events-none"></div>
           </div>
 
           {/* Mobile Simple Image Section - Only visible on mobile */}

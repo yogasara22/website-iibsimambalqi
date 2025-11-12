@@ -96,7 +96,7 @@ const Gallery = () => {
                 {/* Card Footer */}
                 <div className="pt-4 pb-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-gray-700 group-hover:text-green-600 transition-colors duration-300">
+                    <span className="text-lg md:text-xl font-medium text-gray-700 group-hover:text-green-600 transition-colors duration-300">
                       Kegiatan Pesantren
                     </span>
                     <div className="flex items-center space-x-1">

@@ -47,32 +47,13 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/" className="flex items-center group">
-          {/* Logo Container - Enhanced responsive sizing for tablet */}
-          <div className="relative overflow-hidden rounded-full bg-white/90 shadow-md p-1 transition-all duration-300 group-hover:shadow-lg group-hover:bg-white">
+          {/* Logo (transparent, no background) */}
+          <div className="relative transition-all duration-300">
             <img 
               src="/images/logo/logo-iibs.svg" 
               alt="Logo IIBS Imam Balqi" 
               className="h-10 w-auto md:h-11 lg:h-12 transition-all duration-300"
             />
-          </div>
-          
-          {/* Text Container - Enhanced responsive design for tablet */}
-          <div className="ml-2 md:ml-3 transition-all duration-300">
-            <div className="flex flex-col">
-              {/* Main Title - Responsive sizing for tablet */}
-              <span className={`font-bold ${
-                scrolled ? 'text-primary-700' : 'text-white drop-shadow-md'
-              } text-base md:text-lg lg:text-lg transition-all duration-300 leading-none`}>
-                IIBS Imam Balqi
-              </span>
-              
-              {/* Subtitle - Visible on tablet and desktop */}
-              <p className={`text-xs ${
-                scrolled ? 'text-primary-600' : 'text-white/90'
-              } font-medium mt-0.5 hidden md:block lg:block transition-all duration-300 whitespace-nowrap`}>
-                International Islamic Boarding School
-              </p>
-            </div>
           </div>
         </Link>
 
