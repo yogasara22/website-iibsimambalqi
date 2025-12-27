@@ -17,6 +17,22 @@ const Facilities = () => {
       icon: '🕌',
       features: ['Kapasitas 500+', 'Sound System', 'Perpustakaan'],
       tier: 'unggulan'
+    },
+    {
+      name: 'Smart Classroom',
+      description: 'Ruang kelas modern yang dilengkapi teknologi digital interaktif untuk mendukung proses pembelajaran yang efektif dan menyenangkan.',
+      image: '/images/facilities/smart-classroom.webp',
+      icon: '🖥️',
+      features: ['Interactive Flat Panel', 'Full AC', 'High-Speed WiFi'],
+      tier: 'unggulan'
+    },
+    {
+      name: 'Area Memanah',
+      description: 'Sarana olahraga sunnah untuk melatih fokus, ketenangan jiwa, dan kekuatan fisik santri di bawah bimbingan pelatih profesional.',
+      image: '/images/facilities/memanah.webp',
+      icon: '🏹',
+      features: ['Standard Equipment', 'Safety Gear', 'Instruktur Ahli'],
+      tier: 'unggulan'
     }
   ];
 

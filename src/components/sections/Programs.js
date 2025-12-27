@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 const Programs = () => {
   const programs = [
     {
-      title: "Tahfidz Al-Qur'an",
-      description: "Program unggulan dengan metode menghafal Al-Qur'an yang efektif dan menyenangkan untuk membentuk generasi Qur'ani",
+      title: "Tahfidz International Curriculum",
+      description: "Program Unggulan dengan metode menghafal Al-Qur'an 5 Juz bersanad. Program unggulan dengan metode menghafal Al-Qur'an yang efektif dan menyenangkan untuk membentuk generasi Qur'ani.",
       icon: "quran",
       color: "green",
       features: ["30 Juz", "Metode Terbaru", "Bimbingan Intensif"],
@@ -20,7 +20,7 @@ const Programs = () => {
     },
     {
       title: "Bahasa Arab & Inggris",
-      description: "Penguasaan bahasa internasional untuk menghadapi era global dengan metode komunikatif",
+      description: "Penguasaan bahasa internasional berstandar Cambridge Assessment English. Penguasaan bahasa internasional untuk menghadapi era global dengan metode komunikatif",
       icon: "language",
       color: "green",
       features: ["Native Speaker", "Conversation", "Sertifikasi"],
@@ -28,7 +28,7 @@ const Programs = () => {
     },
     {
       title: "Pengembangan Karakter",
-      description: "Pembentukan akhlak mulia dan kepemimpinan berdasarkan nilai-nilai Islam yang komprehensif",
+      description: "Konseling dan Assesment untuk studi luar negeri. Pembentukan akhlak mulia dan kepemimpinan berdasarkan nilai-nilai Islam yang komprehensif",
       icon: "character",
       color: "green",
       features: ["Leadership", "Public Speaking", "Soft Skills"],
