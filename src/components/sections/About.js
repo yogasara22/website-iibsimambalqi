@@ -119,83 +119,23 @@ const About = () => {
               {/* Soft Reflection Effect */}
               <div className="absolute -bottom-8 left-4 right-4 h-8 bg-gradient-to-b from-green-100/20 to-transparent rounded-b-[2rem] blur-sm opacity-40"></div>
             </div>
-            
-            {/* Kurikulum Card */}
-            <div className="group relative bg-gradient-to-br from-primary-50 via-white to-green-50/30 p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-primary-100/50 overflow-hidden transform hover:-translate-y-2">
-              {/* Card Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-green-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
-              
-              {/* Top Accent */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 to-green-500"></div>
-              
-              <div className="relative">
-                {/* Icon */}
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-primary-500 to-green-500 rounded-2xl mb-4 shadow-lg">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                </div>
-                
-                <h3 className="text-2xl font-bold text-gray-800 mb-6 group-hover:text-primary-600 transition-colors duration-300">
-                  Kurikulum IIBSA
-                </h3>
-                
-                <div className="space-y-6">
-                  {/* Kurikulum Internasional */}
-                  <div className="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
-                    <div className="flex items-center mb-3">
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-primary-500 to-green-500 flex items-center justify-center mr-3">
-                        <span className="text-white text-sm font-bold">1</span>
-                      </div>
-                      <h4 className="text-lg font-semibold text-gray-800">Kurikulum Internasional</h4>
-                    </div>
-                    <ul className="ml-11 space-y-2">
-                      {["Cambridge Assessment English", "Tahfidz International Curriculum"].map((item, index) => (
-                        <li key={index} className="flex items-start">
-                          <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-primary-500 mt-2 mr-2"></div>
-                          <span className="text-gray-700">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  {/* Kurikulum Ulumuddin/Pesantren */}
-                  <div className="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
-                    <div className="flex items-center mb-3">
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-primary-500 to-green-500 flex items-center justify-center mr-3">
-                        <span className="text-white text-sm font-bold">2</span>
-                      </div>
-                      <h4 className="text-lg font-semibold text-gray-800">Kurikulum Ulumuddin/Pesantren</h4>
-                    </div>
-                    <ul className="ml-11 space-y-2">
-                      {["Iman, Adab, Aqidah, Fiqh"].map((item, index) => (
-                        <li key={index} className="flex items-start">
-                          <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-primary-500 mt-2 mr-2"></div>
-                          <span className="text-gray-700">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  {/* Kurikulum Nasional */}
-                  <div className="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100">
-                    <div className="flex items-center mb-3">
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-primary-500 to-green-500 flex items-center justify-center mr-3">
-                        <span className="text-white text-sm font-bold">3</span>
-                      </div>
-                      <h4 className="text-lg font-semibold text-gray-800">Kurikulum Nasional</h4>
-                    </div>
-                    <ul className="ml-11 space-y-2">
-                      {["Lulus standar UN Indonesia"].map((item, index) => (
-                        <li key={index} className="flex items-start">
-                          <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-primary-500 mt-2 mr-2"></div>
-                          <span className="text-gray-700">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+
+            {/* Stats Section - Moved here */}
+            <div className="grid grid-cols-2 gap-4 mt-8">
+              {[
+                { number: '500+', label: 'Santri Aktif', icon: '👥' },
+                { number: '50+', label: 'Tenaga Pengajar', icon: '👨‍🏫' },
+                { number: '10+', label: 'Program Unggulan', icon: '📚' },
+                { number: '5+', label: 'Tahun Pengalaman', icon: '🏆' }
+              ].map((stat, index) => (
+                <div key={index} className="text-center group">
+                  <div className="bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+                    <div className="text-2xl mb-2">{stat.icon}</div>
+                    <div className="text-2xl font-bold text-primary-600 mb-1">{stat.number}</div>
+                    <div className="text-xs text-gray-600 font-medium">{stat.label}</div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
           
@@ -304,23 +244,7 @@ const About = () => {
           </div>
         </div>
         
-        {/* Stats Section */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { number: '500+', label: 'Santri Aktif', icon: '👥' },
-            { number: '50+', label: 'Tenaga Pengajar', icon: '👨‍🏫' },
-            { number: '10+', label: 'Program Unggulan', icon: '📚' },
-            { number: '5+', label: 'Tahun Pengalaman', icon: '🏆' }
-          ].map((stat, index) => (
-            <div key={index} className="text-center group">
-              <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <div className="text-3xl mb-3">{stat.icon}</div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">{stat.number}</div>
-                <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
-              </div>
-            </div>
-          ))}
-        </div>
+
       </div>
     </section>
   );
