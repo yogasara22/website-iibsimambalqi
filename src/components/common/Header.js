@@ -51,7 +51,7 @@ const Header = () => {
           <div className="relative transition-all duration-300">
             <img 
               src="/images/logo/logo-iibs.svg" 
-              alt="Logo IIBS Imam Balqi" 
+              alt="IIBS Imam Balqi" 
               className="h-10 w-auto md:h-11 lg:h-12 transition-all duration-300"
             />
           </div>
